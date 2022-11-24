@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import ChildComponent from "./ChildComponent";
 
 function App() {
+  let [counter, setCounter] = useState(0);
+  let callback = valueFromChild => setCounter(valueFromChild);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <p>Value of counter: {counter}</p>
+        <ChildComponent callbackFunc={callback} counterValue={counter} />
+      </div>
   );
 }
-
 export default App;
